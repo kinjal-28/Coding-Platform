@@ -1,14 +1,16 @@
-import type { Config } from "tailwindcss";
+/** @type {import('tailwindcss').Config} */
+module.exports = {
+	content: [
+		"./app/**/*.{js,ts,jsx,tsx}",
+		"./pages/**/*.{js,ts,jsx,tsx}",
+		"./components/**/*.{js,ts,jsx,tsx}",
 
-const config: Config = {
-  content: [
-    "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
-    "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
-    "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
-  ],
-  theme: {
-    extend: {
-      colors: {
+		// Or if using `src` directory:
+		"./src/**/*.{js,ts,jsx,tsx}",
+	],
+	theme: {
+		extend: {
+			colors: {
 				"dark-layer-1": "rgb(40,40,40)",
 				"dark-layer-2": "rgb(26,26,26)",
 				"dark-label-2": "rgba(239, 241, 246, 0.75)",
@@ -23,12 +25,11 @@ const config: Config = {
 				"brand-orange-s": "rgb(193, 122, 15)",
 				"dark-yellow": "rgb(255 192 30)",
 				"dark-pink": "rgb(255 55 95)",
-				"olive": "rgb(0, 184, 163)",
+				olive: "rgb(0, 184, 163)",
 				"dark-green-s": "rgb(44 187 93)",
 				"dark-blue-s": "rgb(10 132 255)",
 			},
-    },
-  },
-  plugins: [],
+		},
+	},
+	plugins: [],
 };
-export default config;
