@@ -1,8 +1,14 @@
+import { authModalState } from "@/atoms/authModalAtom";
 import React from "react";
+import { useSetRecoilState } from "recoil";
 
 type loginProps = {};
 
 const Login: React.FC<loginProps> = () => {
+  const setAuthModalState= useSetRecoilState(authModalState);
+  const handleClick=(type:"login" | "register" | "forgotPassword") => {
+    setAuthModalState((prev) => ({ ...prev, type}));
+  };
   return (
     <form className="space-y-6 px-6 pb-4">
       <h3 className="text-xl font-medium text-white">Sign In to CodeJECRC</h3>
@@ -20,7 +26,7 @@ const Login: React.FC<loginProps> = () => {
           className=" border-2 outline-none sm:text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5
         bg-gray-600 border-gray-500 placeholder-gray-400 text-white
         "
-          placeholder="name@company.com"
+          placeholder="name@gmail.com"
         />
       </div>
       <div>
@@ -49,12 +55,14 @@ const Login: React.FC<loginProps> = () => {
         Login
       </button>
 
-      <button className="flex  justify-end text-sm text-brand-orange hover:underline w-full text-right">
+      <button className="flex  justify-end" onClick={() =>handleClick("forgotPassword")}>
+      <a href="#" className="text-sm text-brand-orange hover:underline w-full text-right">
         Forgot password
+        </a>
       </button>
       <div className="text-sm font-medium text-gray-400">
         Not Registered?{" "}
-        <a href="#" className="text-white hover:underline ">
+        <a href="#" className="text-white hover:underline " onClick={() =>handleClick("register")}>
           Create Account
         </a>
       </div>
